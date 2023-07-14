@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/laboratorio")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class LaboratoryController {
 
     private LaboratoryService laboratoryService;
@@ -43,9 +44,9 @@ public class LaboratoryController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteLaboratoryController(@PathVariable("id") Long id) {
+    public ResponseEntity<Boolean> deleteLaboratoryController(@PathVariable("id") Long id) {
         laboratoryService.deleteLaboratoryById(id);
-        return new ResponseEntity<>("El laboratorio ha sido eliminado correctamente",HttpStatus.OK);
+        return new ResponseEntity<>(Boolean.TRUE,HttpStatus.OK);
 
     }
 

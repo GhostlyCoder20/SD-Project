@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequestMapping("api/tipomantenimiento")
 public class MaintenanceTypeController {
 
@@ -42,9 +43,9 @@ public class MaintenanceTypeController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteMaintenanceTypeController(@PathVariable("id") Long id) {
+    public ResponseEntity<Boolean> deleteMaintenanceTypeController(@PathVariable("id") Long id) {
         maintenanceTypeService.deleteMaintenanceTypeById(id);
-        return new ResponseEntity<>("El tipo de mantenimiento ha sido eliminado correctamente ",HttpStatus.OK);
+        return new ResponseEntity<>(Boolean.TRUE,HttpStatus.OK);
 
     }
 

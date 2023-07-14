@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequestMapping("api/computadora")
 public class ComputerController {
 
@@ -43,9 +44,9 @@ public class ComputerController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteComputerController(@PathVariable("id") Long id) {
+    public ResponseEntity<Boolean> deleteComputerController(@PathVariable("id") Long id) {
         computerService.deleteComputerById(id);
-        return new ResponseEntity<>("La computadora ha sido eliminada correctamente", HttpStatus.OK );
+        return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK );
     }
 
 
