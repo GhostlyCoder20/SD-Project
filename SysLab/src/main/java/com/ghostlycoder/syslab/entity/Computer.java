@@ -1,7 +1,12 @@
 package com.ghostlycoder.syslab.entity;
 
+import com.sun.tools.javac.Main;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Data
 @Table(name = "computadora")
@@ -31,6 +36,8 @@ public class Computer {
     private String noInventory;
     @Column(name = "ubicacion")
     private int location;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "computer", cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Maintenance> maintenances;
 
 
 }

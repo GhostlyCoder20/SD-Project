@@ -34,7 +34,6 @@ public class DiagnosticServiceImpl implements DiagnosticService {
     @Override
     public Diagnostic updateDiagnostic(Diagnostic diagnostic) {
         Diagnostic exist = diagnosticRepository.findById(diagnostic.getId()).orElseThrow();
-        exist.setIdLaboratory(diagnostic.getIdLaboratory());
         exist.setServiceTag(diagnostic.getServiceTag());
         exist.setDescription(diagnostic.getDescription());
         exist.setImage1(diagnostic.getImage1());

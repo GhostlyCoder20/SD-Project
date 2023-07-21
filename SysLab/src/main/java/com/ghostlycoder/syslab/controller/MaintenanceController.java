@@ -44,9 +44,9 @@ public class MaintenanceController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteMaintenanceController(@PathVariable("id") Long id) {
+    public ResponseEntity<Boolean> deleteMaintenanceController(@PathVariable("id") Long id) {
         maintenanceService.deleteMaintenance(id);
-        return new ResponseEntity<>("El mantenimiento ha sido eliminado correctamente",HttpStatus.OK);
+        return new ResponseEntity<>(Boolean.TRUE,HttpStatus.OK);
 
     }
 

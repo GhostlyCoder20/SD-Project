@@ -1,6 +1,10 @@
 package com.ghostlycoder.syslab.service.impl;
 
+import com.ghostlycoder.syslab.entity.Computer;
+import com.ghostlycoder.syslab.entity.Laboratory;
 import com.ghostlycoder.syslab.entity.Maintenance;
+import com.ghostlycoder.syslab.repository.ComputerRepository;
+import com.ghostlycoder.syslab.repository.LaboratoryRepository;
 import com.ghostlycoder.syslab.repository.MaintenanceRepository;
 import com.ghostlycoder.syslab.service.MaintenanceService;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +20,8 @@ public class MaintenanceServiceImpl implements MaintenanceService {
 
 
     private final MaintenanceRepository maintenanceRepository;
+    private final LaboratoryRepository laboratoryRepository;
+    private final ComputerRepository computerRepository;
 
     @Override
     public List<Maintenance> searchAllMaintenances() {
@@ -36,8 +42,6 @@ public class MaintenanceServiceImpl implements MaintenanceService {
     @Override
     public Maintenance updateMaintenance(Maintenance maintenance) {
         Maintenance exist = maintenanceRepository.findById(maintenance.getId()).orElseThrow();
-        exist.setIdLaboratory(maintenance.getIdLaboratory());
-        exist.setIdComputer(maintenance.getIdComputer());
         exist.setCleanType(maintenance.getCleanType());
         exist.setDescription(maintenance.getDescription());
         exist.setDate(maintenance.getDate());

@@ -48,9 +48,9 @@ public class DiagnosticController {
     }
 
     @DeleteMapping("{id}")
-    ResponseEntity<String> deleteDiagnosticController(@PathVariable("id") Long id){
+    ResponseEntity<Boolean> deleteDiagnosticController(@PathVariable("id") Long id){
         diagnosticService.deleteDiagnostic(id);
-        return new ResponseEntity<>("El diagnostico ha sido eliminado correctamente", HttpStatus.OK);
+        return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
     }
 
 
